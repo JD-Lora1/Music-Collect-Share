@@ -1,9 +1,5 @@
 package model;
 
-enum Category {
-	NEWBIE, LITTLE_CONTRIBUTOR, MILD_CONTRIBUTOR, STAR_CONTRIBUTOR;
-}
-
 public class Users{
 
 	//Atributes

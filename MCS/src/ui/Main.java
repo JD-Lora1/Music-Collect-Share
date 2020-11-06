@@ -27,13 +27,10 @@ public class Main{
 		
 			switch (opt){
 				case 1:
-					addPilotx(championship1);
 					break;
 				case 2:
-					showAverageTimes(championship1);
 					break;
 				case 0:
-					System.out.println("Fin del progarama");
 					ctrl=true;
 					break;
 			}
