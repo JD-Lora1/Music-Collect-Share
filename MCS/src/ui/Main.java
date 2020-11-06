@@ -1,6 +1,6 @@
 package ui;
 import java.util.Scanner;
-import model.MCS;
+import model.Mcs;
 
 public class Main{
 	public static Scanner sc = new Scanner(System.in);
@@ -37,13 +37,13 @@ public class Main{
 		}
 	}
 
-	public static MCS createMcs(){
+	public static Mcs createMcs(){
 		System.out.println("\nPorfavor ingrese:");
 		System.out.print("Anio del Campeonato: ");
 		int year = sc.nextInt();
 		sc.nextLine();
 
-		MCS mcsX = new MCS();
+		Mcs mcsX = new Mcs();
 		return mcsX;
 	}
 
