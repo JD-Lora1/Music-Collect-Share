@@ -33,7 +33,7 @@ public class Mcs{
 			if(user[i]==null){
 				user[i]= new User(userInfo[0], userInfo[1], userInfo[2]);
 				ctrl=true;
-				message = "Se ha creado el usuario";
+				message = "  *Se ha creado el usuario*";
 			}
 		}
 		return message;
@@ -41,23 +41,21 @@ public class Mcs{
 
 	public String addSongX(String[] songInfo){
 		String message="";
-		boolean ctrl=false;
+		boolean ctrl=false;   //to evaluate if there is a null space in the song arraylist
+
 		Genre genre = Genre.valueOf(songInfo[3].toUpperCase().replaceFirst(" ","_"));
 
-		/*if(sharedPool[(sharedPool.length -1)]!=null){
+		if(sharedPool[(sharedPool.length -1)]!=null){
 			message = "  *Lo sentimos. Se ha alcanzado nuestro MAXIMO numero de CANCIONES*";
 			ctrl=true;  //As the entire songs' arraylist is full, it is unnecessary to run the for
 		}
-		//if(songInfo[3].t)
 		for(int i=0; i< sharedPool.length && !ctrl; i++){
 			if(sharedPool[i]==null){
-				sharedPool[i]= new Song(songInfo[0], songInfo[1], songInfo[2], songInfo[3]);
+				sharedPool[i]= new Song(songInfo[0], songInfo[1], songInfo[2], genre);
 				ctrl=true;
-				message = "Se ha creado el usuario";
+				message = "  *Se ha agregado la cancion*";
 			}
-		}*/
-		sharedPool[0]= new Song(songInfo[0], songInfo[1], songInfo[2], genre);
-		message=" genre:"+String.valueOf(genre);
+		}
 		return message;
 	}
 
