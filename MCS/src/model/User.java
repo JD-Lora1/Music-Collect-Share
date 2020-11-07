@@ -34,7 +34,6 @@ public class User{
 	}
 
 	//Sets
-
 	public void setUsername(String username){
 		this.username = username;
 	}
@@ -49,6 +48,19 @@ public class User{
 
 	public void setCategory(Category category){
 		this.category = category;
+	}
+
+	//User Info
+
+	public String showInfo(){
+		String message;
+
+		message= "*************  User **************\n"+
+				"**  UserName: "+username+"\n"+
+				"**  Age: "+age+"\n"+
+				"**  Category: "+category.toString()+"\n"+
+				"***********************************\n";
+		return message;
 	}
 
 }

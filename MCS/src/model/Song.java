@@ -6,16 +6,16 @@ public class Song{
 	private String tittle;
 	private String artistName;
 	private String releaseDate;
-	private int[] length;
 	private Genre genre;
+	private int[] length = new int[2];
 
 	//Constructor
-	public Song(String tittle, String artistName, String releaseDate, Genre genre){
+	public Song(String tittle, String artistName, String releaseDate, Genre genre, int[] length){
 		this.tittle = tittle;
 		this.artistName = artistName;
 		this.releaseDate = releaseDate;
-		length = new int[2]; 
 		this.genre = genre;
+		this.length = length; 
 	}
 
 }

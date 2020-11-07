@@ -3,9 +3,9 @@ package model;
 public class PrivatePlaylist extends Playlist{
 
 	//Atributes
-	private String owner;
+	private User owner;
 
-	public PrivatePlaylist(String name, String owner){
+	public PrivatePlaylist(String name, User owner){
 		super(name);
 		this.owner = owner;
 	}
