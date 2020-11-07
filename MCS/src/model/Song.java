@@ -7,10 +7,10 @@ public class Song{
 	private String artistName;
 	private String releaseDate;
 	private int[] length;
-	private String genre;
+	private Genre genre;
 
 	//Constructor
-	public Song(String tittle, String artistName, String releaseDate, String genre){
+	public Song(String tittle, String artistName, String releaseDate, Genre genre){
 		this.tittle = tittle;
 		this.artistName = artistName;
 		this.releaseDate = releaseDate;

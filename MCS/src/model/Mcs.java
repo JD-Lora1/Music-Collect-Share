@@ -26,8 +26,8 @@ public class Mcs{
 		boolean ctrl=false;
 
 		if(user[(user.length -1)]!=null){
-			message = "  *Lo sentimos. Se ha alcanzado nuestro MAXIMO numero de usuarios*";
-			ctrl=true;  //As everything is full, it is unnecessary to run the for
+			message = "  *Lo sentimos. Se ha alcanzado nuestro MAXIMO numero de USUARIOS*";
+			ctrl=true;  //As the entire users' arraylist is full, it is unnecessary to run the for
 		}
 		for(int i=0; i<user.length && !ctrl; i++){
 			if(user[i]==null){
@@ -36,7 +36,46 @@ public class Mcs{
 				message = "Se ha creado el usuario";
 			}
 		}
-
 		return message;
 	}
+
+	public String addSongX(String[] songInfo){
+		String message="";
+		boolean ctrl=false;
+		Genre genre = Genre.valueOf(songInfo[3].toUpperCase().replaceFirst(" ","_"));
+
+		/*if(sharedPool[(sharedPool.length -1)]!=null){
+			message = "  *Lo sentimos. Se ha alcanzado nuestro MAXIMO numero de CANCIONES*";
+			ctrl=true;  //As the entire songs' arraylist is full, it is unnecessary to run the for
+		}
+		//if(songInfo[3].t)
+		for(int i=0; i< sharedPool.length && !ctrl; i++){
+			if(sharedPool[i]==null){
+				sharedPool[i]= new Song(songInfo[0], songInfo[1], songInfo[2], songInfo[3]);
+				ctrl=true;
+				message = "Se ha creado el usuario";
+			}
+		}*/
+		sharedPool[0]= new Song(songInfo[0], songInfo[1], songInfo[2], genre);
+		message=" genre:"+String.valueOf(genre);
+		return message;
+	}
+
+	/*public String createPlaylistX(String name){
+		String message="";
+		boolean ctrl=false;
+
+		if(user[(user.length -1)]!=null){
+			message = "  *Lo sentimos. Se ha alcanzado nuestro MAXIMO numero de PLAYLIST*";
+			ctrl=true;  //As the entire playlist's arraylist is full, it is unnecessary to run the for
+		}
+		for(int i=0; i<user.length && !ctrl; i++){
+			if(user[i]==null){
+				user[i]= new User(userInfo[0], userInfo[1], userInfo[2]);
+				ctrl=true;
+				message = "Se ha creado el usuario";
+			}
+		}
+		return message;
+	}*/
 }

@@ -1,6 +1,7 @@
 package ui;
 import java.util.Scanner;
 import model.Mcs;
+import model.Genre;
 
 public class Main{
 	public static Scanner sc = new Scanner(System.in);
@@ -17,13 +18,12 @@ public class Main{
 			System.out.println(
 					"\nSeleccione una opcion:\n" +
 					"(1) Crear Usuario\n" +
-					"(2) C\n"+
+					"(2) aniadir cancion\n"+
 					"(0) Salir" );
 
 			System.out.print(": ");
 			opt = sc.nextInt();
 			sc.nextLine();
-			System.out.println(" ");
 			
 			if(opt!=1 && opt!=2 && opt!=0){
 				System.out.println("Digite una opcion valida"); }
@@ -31,7 +31,7 @@ public class Main{
 			switch (opt){
 				case 1: System.out.println(createUser());
 					break;
-				case 2:
+				case 2: System.out.println(addSong());
 					break;
 				case 0: System.out.println("   *Fin*");
 					ctrl=true;
@@ -53,6 +53,40 @@ public class Main{
 		String[] userInfo = {username, password, age};
 
 		String message = mcs.createUserX(userInfo);
+		return message;
+	}
+
+	/*public static String createPlaylist(){
+
+		String tittle, String artistName, String releaseDate, String genre
+
+		System.out.println("\nPorfavor ingrese:");
+		System.out.print("Nombre de la playlist: ");
+		String playlistName = sc.nextLine();
+
+		mcs.createPlaylistX()
+	}*/
+
+	public static String addSong(){
+
+		System.out.println("\nPorfavor ingrese:");
+		System.out.print("Nombre de la cancion: ");
+		String songName = sc.nextLine();
+		System.out.print("Nombre del artista: ");
+		String artistName = sc.nextLine();
+		System.out.print("Fecha de publicacion: ");
+		String releaseDate = sc.nextLine();
+		System.out.println("Genero de la cancion:");
+
+		for(int i=0; i<Genre.values().length; i++){
+			System.out.println(" *"+Genre.values()[i].toString());
+		}
+
+		String sGenre = sc.nextLine();
+
+		String[] songInfo = {songName, artistName, releaseDate, sGenre};
+
+		String message = mcs.addSongX(songInfo);
 		return message;
 	}
 
