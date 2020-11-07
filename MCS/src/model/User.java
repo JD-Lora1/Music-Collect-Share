@@ -1,18 +1,19 @@
 package model;
 
-public class Users{
+public class User{
 
-	//Atributes
+	//Attributes
 	private String username;
 	private String password;
 	private String age;
 	private Category category;
 
-	public Users(String username, String password, String age, String category){
+	//Constructor
+	public User(String username, String password, String age){
 		this.username = username;
 		this.password = password;
 		this.age = age;
-		this.category = Category.valueOf(category);
+		category = Category.NEWBIE;
 	}
 
 	//Gets
@@ -46,8 +47,8 @@ public class Users{
 		this.age = age;
 	}
 
-	public void setCategory(String category){
-		this.category = Category.valueOf(category);
+	public void setCategory(Category category){
+		this.category = category;
 	}
 
 }

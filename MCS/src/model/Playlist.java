@@ -2,17 +2,18 @@ package model;
 
 public abstract class Playlist{
 
-	//Atributes
-	private static final int MAX_SONGS = 30;
+	//Attributes
 	
+	//Relationship
 	private String name;
 	private int [] length;
 	private Genre[] genrePlaylist; 
 
+	//Constructor 
 	public Playlist(String name){
 		this.name = name;
 		length = new int[2];
-		genrePlaylist = new Genre[MAX_SONGS];
+		genrePlaylist = new Genre[Mcs.MAX_SONG];
 	}
 
 }

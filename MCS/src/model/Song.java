@@ -1,6 +1,6 @@
 package model;
 
-public class Song(){
+public class Song{
 
 	//Atributes
 	private String tittle;
@@ -17,12 +17,5 @@ public class Song(){
 		length = new int[2]; 
 		this.genre = genre;
 	}
-	
-	public Song(String tittle, String artistName, String releaseDate, String genre){
-		this.tittle = tittle;
-		this.artistName = artistName;
-		this.releaseDate = releaseDate;
-		this.length = length; 
-		this.genre = genre;
-	}
+
 }

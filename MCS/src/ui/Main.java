@@ -5,6 +5,9 @@ import model.Mcs;
 public class Main{
 	public static Scanner sc = new Scanner(System.in);
 
+	//Relationship
+	private static Mcs mcs = new Mcs();
+
 	public static void main(String[] args){
 
 		int opt=-1;
@@ -13,8 +16,8 @@ public class Main{
 		while(opt!=1 && opt!=2 && opt!=0 || !ctrl){
 			System.out.println(
 					"\nSeleccione una opcion:\n" +
-					"(1) Agregar Piloto\n" +
-					"(2) Calcular los promedios\n"+
+					"(1) Crear Usuario\n" +
+					"(2) C\n"+
 					"(0) Salir" );
 
 			System.out.print(": ");
@@ -26,25 +29,31 @@ public class Main{
 				System.out.println("Digite una opcion valida"); }
 		
 			switch (opt){
-				case 1:
+				case 1: System.out.println(createUser());
 					break;
 				case 2:
 					break;
-				case 0:
+				case 0: System.out.println("   *Fin*");
 					ctrl=true;
 					break;
 			}
 		}
 	}
 
-	public static Mcs createMcs(){
-		System.out.println("\nPorfavor ingrese:");
-		System.out.print("Anio del Campeonato: ");
-		int year = sc.nextInt();
-		sc.nextLine();
+	public static String createUser(){
 
-		Mcs mcsX = new Mcs();
-		return mcsX;
+		System.out.println("\nPorfavor ingrese:");
+		System.out.print("Nombre de usuario: ");
+		String username = sc.nextLine();
+		System.out.print("Password: ");
+		String password = sc.nextLine();
+		System.out.print("Edad: ");
+		String age = sc.nextLine();
+
+		String[] userInfo = {username, password, age};
+
+		String message = mcs.createUserX(userInfo);
+		return message;
 	}
 
 }
