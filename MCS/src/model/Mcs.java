@@ -14,13 +14,21 @@ public class Mcs{
 	//Constructor
 	/**
 	* Create a new mcs.<br>
+	* <b>pre #1:</b> The user array is initialized.<br>
+	* <b>pre #2:</b> The sharedPool array is initialized.<br>
+	* <b>pre #3:</b> The playlist array is initialized.<br>
 	*/
 	public Mcs(){				
 		user = new User [MAX_USER];
 		sharedPool = new Song [MAX_SONG];
 		playlist = new Playlist [MAX_PLAYLIST];
 	}
-	//create User
+	/**
+	* Create a new user.<br>
+	* <b>pre #1:</b> The user array is initialized (is not null).<br>
+	* @param userInfo used to create the user. userInfo != null.
+	* @return a String that indicates if the user was created or not.
+	*/
 	public String createUserX(String[] userInfo){
 		String message="";
 		boolean ctrl=false;
@@ -38,10 +46,16 @@ public class Mcs{
 		}
 		return message;
 	}
-	//Add Song
+	/**
+	* Add(create) a song.<br>
+	* <b>pre #1:</b> The sharedPool array is initialized (is not null).<br>
+	* @param songInfo . Song's info .Used to create the song. songInfo != null.
+	* @param length . Song's length. Used to create the song. length != null.
+	* @return a String that indicates if the song was added or not.
+	*/
 	public String addSongX(String[] songInfo, int[] length){
 		String message="";
-		boolean ctrl=false;   //to evaluate if there is a null space in the song arraylist
+		boolean ctrl=false; //to evaluate if there is a null space in the song arraylist
 
 		Genre genre = Genre.valueOf(songInfo[3].toUpperCase().replaceFirst(" ","_"));
 
@@ -58,7 +72,13 @@ public class Mcs{
 		}
 		return message;
 	}
-	//create Private Playlist
+	/**
+	* Create a private playlist.<br>
+	* <b>pre #1:</b> The platlist array is initialized (is not null).<br>
+	* @param tittle . Playlist name used to create the playlist. tittle != null.
+	* @param owner . Usernmae used to create the song. owner != null.
+	* @return a String that shows if the playlist was cretated or not(the playlist array is completely full or the user was not found).
+	*/
 	public String privatePlaylistX(String tittle, String owner){
 		String message="";
 		boolean ctrl=false;
@@ -81,7 +101,13 @@ public class Mcs{
 		}
 		return message;
 	}
-	//create Restricted Playlist
+	/**
+	* Create a restricted playlist.<br>
+	* <b>pre #1:</b> The platlist array is initialized (is not null).<br>
+	* @param tittle . Playlist name used to create the playlist. tittle != null.
+	* @param owner . Usernamee used to create the song. owner != null.
+	* @return a String that shows if the playlist was cretated or not(the playlist array is completely full or the user was not found).
+	*/
 	public String restrictedPlaylistX(String tittle, String[] owner){
 		String message="";
 		boolean ctrl = false;
@@ -132,7 +158,13 @@ public class Mcs{
 		
 		return message;
 	}
-	//create Public Playlist
+	/**
+	* Create a public playlist.<br>
+	* <b>pre #1:</b> The platlist array is initialized (is not null).<br>
+	* @param tittle . Playlist name used to create the playlist. tittle != null.
+	* @param grade . grade used to create the song. owner != null.
+	* @return a String that shows if the playlist was cretated or not(the playlist array is completely full or the user was not found).
+	*/
 	public String publicPlaylistX(String tittle, int grade){
 		String message="";
 		boolean ctrl=false;
@@ -150,16 +182,24 @@ public class Mcs{
 		}
 		return message;
 	}
-
-	// Show user info
+	/**
+	* Show user info.<br>
+	* <b>pre #1:</b> The user array is initialized (is not null).<br>
+	* @param name used to find the user and then the info of this user. name != null.
+	* @return a String with the user's info.
+	*/
 	public String userInfo(String name){
 		String message="Este usuario NO existe ";
 		int[] info = findUser(name);
 		message=user[info[1]].showInfo();
 		return message;
 	}
-
-	//Find User
+	/**
+	* find a user by the name.<br>
+	* <b>pre #1:</b> The user array is initialized (is not null).<br>
+	* @param name used to find the user. name != null.
+	* @return an int[] that in the [1] position contains the position of the user in the user array.
+	*/
 	public int[] findUser(String name){
 		int[] ctrl= new int[2];
 		ctrl[0] = 0;
@@ -170,7 +210,6 @@ public class Mcs{
 				ctrl[1]=i;
 			}
 		}
-
 		return ctrl;
 	}
 

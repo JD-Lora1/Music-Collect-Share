@@ -83,7 +83,11 @@ public class Main{
 		}
 	}
 
-	// Create User
+	/**
+	* Create a new user.<br>
+	* <b>pre #1:</b> The mcs is not null.<br>
+	* @return a String that indicates if the user was created or not.
+	*/
 	public static String createUser(){
 
 		System.out.println("\nPorfavor ingrese:");
@@ -99,7 +103,11 @@ public class Main{
 		String message = mcs.createUserX(userInfo);
 		return message;
 	}
-	//Add Song
+	/**
+	* Add a new Song.<br>
+	* <b>pre #1:</b> The mcs is not null.<br>
+	* @return a String that indicates if the song was created or not.
+	*/
 	public static String addSong(){
 
 		System.out.println("\nPorfavor ingrese:");
@@ -146,7 +154,6 @@ public class Main{
 					ctrlGen=true;
 				}
 			}
-
 			if(!ctrlGen){
 				System.out.println("\nEste genero No esta en nuestra base, digite alguno de la lista: \n");
 			}
@@ -156,7 +163,10 @@ public class Main{
 		String message = mcs.addSongX(sSongInfo, length);
 		return message;
 	}
-	//Create Playlist
+	/**
+	* Create a new Playlist .<br>
+	* @return a String that indicates if the playlist was created or not.
+	*/
 	public static String createPlaylist(){
 		System.out.println("\nPorfavor ingrese:");
 		System.out.print("Titulo de la playlist: ");
@@ -192,7 +202,12 @@ public class Main{
 		}
 		return message;
 	}
-	//Private Playlist
+	/**
+	* Create a private playlist.<br>
+	* <b>pre #1:</b> The mcs is not null.<br>
+	* @param name is the name of the playlist to create. name comes from createPlaylist(). name != null.
+	* @return a String that indicates if the private Playlist was created or not.
+	*/
 	public static String privatePlaylist(String name){
 		String messageX="";
 		System.out.println("Username del propietario:");
@@ -200,7 +215,12 @@ public class Main{
 		messageX= mcs.privatePlaylistX(name, owner);
 		return messageX;
 	}
-	//Public Playlist
+	/**
+	* Create a public playlist.<br>
+	* <b>pre #1:</b> The mcs is not null.<br>
+	* @param name is the name of the playlist to create. name comes from createPlaylist(). name != null.
+	* @return a String that indicates if the public Playlist was created or not.
+	*/
 	public static String publicPlaylist(String name){
 		String messageX="";
 		System.out.println("Calificacion de la playlist (1-5)");
@@ -215,8 +235,12 @@ public class Main{
 		messageX= mcs.publicPlaylistX(name, x);
 		return messageX;
 	}
-
-	//Restricted Playlist
+	/**
+	* Create a restricted playlist.<br>
+	* <b>pre #1:</b> The mcs is not null.<br>
+	* @param name is the name of the playlist to create. name comes from createPlaylist(). name != null.
+	* @return a String that indicates if the restricted Playlist was created or not.
+	*/
 	public static String restrictedPlaylist(String name){
 		String messageX="";
 		System.out.println("Cuantos propietarios tiene la playlist? (Max 5)");
@@ -236,9 +260,11 @@ public class Main{
 		
 		messageX= mcs.restrictedPlaylistX(name, owner);
 		return messageX;
-	}
-
-	//show User's Info
+	}/**
+	* Show user's information.<br>
+	* <b>pre #1:</b> The mcs is initialized (is not null).<br>
+	* @return a String with the user's information. 
+	*/
 	public static String showUserInfo(){
 		String name="";
 		System.out.println("Para mostrar la informacion digite:");
