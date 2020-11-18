@@ -90,7 +90,7 @@ public class User{
 		this.category = category;
 	}
 	/**
-	* Calculate .<br>
+	* Show user info .<br>
 	* <b>pre #1:</b> username is initialized (is not null).<br>
 	* <b>pre #2:</b> age is initialized (is not null).<br>
 	* <b>pre #3:</b> category is initialized (is not null).<br>

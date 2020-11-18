@@ -5,9 +5,9 @@ public abstract class Playlist{
 	//Attributes
 	
 	//Relationship
-	private String name;
-	private int [] length;
-	private Genre[] genrePlaylist; 
+	public String name;
+	public int [] length;
+	public Genre[] genrePlaylist;
 
 	//Constructor
 	/**
@@ -22,5 +22,12 @@ public abstract class Playlist{
 		length = new int[2];
 		genrePlaylist = new Genre[Mcs.MAX_SONG];
 	}
-
+	/**
+	* Show Playlist info.<br>
+	**/
+	public abstract String showInfo();
+	/**
+	* Get playlist name.<br>
+	**/
+	public abstract String getName();
 }

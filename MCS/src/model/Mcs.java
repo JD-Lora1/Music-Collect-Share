@@ -9,7 +9,8 @@ public class Mcs{
 	//Relationship
 	User user [];			
 	Song sharedPool [];		
-	Playlist playlist [];	
+	Playlist playlist [];
+
 
 	//Constructor
 	/**
@@ -75,11 +76,11 @@ public class Mcs{
 	/**
 	* Create a private playlist.<br>
 	* <b>pre #1:</b> The platlist array is initialized (is not null).<br>
-	* @param tittle . Playlist name used to create the playlist. tittle != null.
+	* @param title . Playlist name used to create the playlist. title != null.
 	* @param owner . Usernmae used to create the song. owner != null.
 	* @return a String that shows if the playlist was cretated or not(the playlist array is completely full or the user was not found).
 	*/
-	public String privatePlaylistX(String tittle, String owner){
+	public String privatePlaylistX(String title, String owner){
 		String message="";
 		boolean ctrl=false;
 		int[] arraylistUser=findUser(owner);
@@ -91,7 +92,7 @@ public class Mcs{
 			}
 			for(int i=0; i<user.length && !ctrl; i++){
 				if(playlist[i]==null){
-					playlist[i]= new PrivatePlaylist(tittle, user[arraylistUser[1]]);
+					playlist[i]= new PrivatePlaylist(title, user[arraylistUser[1]]);
 					ctrl=true;
 					message = "Se ha creado la Playlist Privada";
 				}
@@ -104,11 +105,11 @@ public class Mcs{
 	/**
 	* Create a restricted playlist.<br>
 	* <b>pre #1:</b> The platlist array is initialized (is not null).<br>
-	* @param tittle . Playlist name used to create the playlist. tittle != null.
+	* @param title . Playlist name used to create the playlist. title != null.
 	* @param owner . Usernamee used to create the song. owner != null.
 	* @return a String that shows if the playlist was cretated or not(the playlist array is completely full or the user was not found).
 	*/
-	public String restrictedPlaylistX(String tittle, String[] owner){
+	public String restrictedPlaylistX(String title, String[] owner){
 		String message="";
 		boolean ctrl = false;
 		int verifyUser = 0;
@@ -146,7 +147,7 @@ public class Mcs{
 					for(int m=0; m<userx.length; m++){
 						userx[m]=user[positions[m]];
 					}
-					playlist[i]= new RestrictedPlaylist(tittle, userx);
+					playlist[i]= new RestrictedPlaylist(title, userx);
 					ctrl=true;
 					message = "Se ha creado la Playlist Restricted";
 				}
@@ -161,11 +162,11 @@ public class Mcs{
 	/**
 	* Create a public playlist.<br>
 	* <b>pre #1:</b> The platlist array is initialized (is not null).<br>
-	* @param tittle . Playlist name used to create the playlist. tittle != null.
-	* @param grade . grade used to create the song. owner != null.
+	* @param title . Playlist name used to create the playlist. title != null.
+	* @param grade . grade used to create the song. grade != null.
 	* @return a String that shows if the playlist was cretated or not(the playlist array is completely full or the user was not found).
 	*/
-	public String publicPlaylistX(String tittle, int grade){
+	public String publicPlaylistX(String title, int grade){
 		String message="";
 		boolean ctrl=false;
 
@@ -175,7 +176,7 @@ public class Mcs{
 		}
 		for(int i=0; i<user.length && !ctrl; i++){
 			if(playlist[i]==null){
-				playlist[i]= new PublicPlaylist(tittle, grade);
+				playlist[i]= new PublicPlaylist(title, grade);
 				ctrl=true;
 				message = "Se ha creado la Playlist Publica";
 			}
@@ -191,7 +192,8 @@ public class Mcs{
 	public String userInfo(String name){
 		String message="Este usuario NO existe ";
 		int[] info = findUser(name);
-		message=user[info[1]].showInfo();
+		if(info[0]==1)
+			message=user[info[1]].showInfo();
 		return message;
 	}
 	/**
@@ -204,13 +206,82 @@ public class Mcs{
 		int[] ctrl= new int[2];
 		ctrl[0] = 0;
 		ctrl[1] = 0;
-		for(int i=0; i<user.length && ctrl[0]==1; i++){
-			if(user[i]!=null && name.equals(user[i].getUsername())){
+		for(int i=0; i<user.length && ctrl[0]!=1; i++){
+			if(user[i]!=null && name.equals(user[i].getUsername()) ){
 				ctrl[0]=1;
 				ctrl[1]=i;
 			}
 		}
 		return ctrl;
 	}
-
+	/**
+	* Show song info.<br>
+	* <b>pre #1:</b> The sharedPool array is initialized (is not null).<br>
+	* @param name used to find the song and then the info of this song. name != null.
+	* @return a String with the song's info.
+	*/
+	public String songInfo(String name){
+		String message="Esta cancion NO existe ";
+		int[] info = findSong(name);
+		if(info[0]==1)
+			message=sharedPool[info[1]].showInfo();
+		return message;
+	}
+	/**
+	* find a song by the name.<br>
+	* <b>pre #1:</b> The sharedPool array is initialized (is not null).<br>
+	* @param name used to find the song. name != null.
+	* @return an int[] that in the [1] position contains the position of the song in the sharedPool array.
+	*/
+	public int[] findSong(String name){
+		int[] ctrl= new int[2];
+		ctrl[0] = 0;
+		ctrl[1] = 0;
+		for(int i=0; i<sharedPool.length && ctrl[0]!=1; i++){
+			if(sharedPool[i]!=null && name.equals(sharedPool[i].getTitle())){
+				ctrl[0]=1;
+				ctrl[1]=i;
+			}
+		}
+		return ctrl;
+	}
+	/**
+	* Show playlist info.<br>
+	* <b>pre #1:</b> The playlist array is initialized (is not null).<br>
+	* @param name used to find the playlist and then the info of this playlist. name != null.
+	* @return a String with the playlist's info.
+	*/
+	public String playlistInfo(String name, int opt){
+		String message="Esta playlist NO existe ";
+		int[] info = findPlaylist(name);
+		if(info[0]==1){
+			switch (opt){
+				case 1: message = playlist[info[1]].showInfo(); // need changes
+					break;
+				case 2: message = playlist[info[1]].showInfo(); // need changes
+					break;
+				case 3: message = playlist[info[1]].showInfo(); // need changes
+					break;
+			}
+		}
+		return message;
+	}
+	/**
+	* find a playlist by the name.<br>
+	* <b>pre #1:</b> The playlist array is initialized (is not null).<br>
+	* @param name used to find the playlist. name != null.
+	* @return an int[] that in the [1] position contains the position of the playlist in the playlist array.
+	*/
+	public int[] findPlaylist(String name){
+		int[] ctrl= new int[2];
+		ctrl[0] = 0;
+		ctrl[1] = 0;
+		for(int i=0; i<playlist.length && ctrl[0]!=1; i++){
+			if(playlist[i]!=null && name.equals(playlist[i].getName())){
+				ctrl[0]=1;
+				ctrl[1]=i;
+			}
+		}
+		return ctrl;
+	}
 }

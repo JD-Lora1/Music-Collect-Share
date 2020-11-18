@@ -51,22 +51,21 @@ public class Main{
 							"                                                \n" +     
 							"*************************************************\n" );
 
-		while(opt!=1 && opt!=2 && opt!=3 && opt!=4 && opt!=0 || !ctrl){
+		while(!ctrl){
 			System.out.println(
 					"\nSeleccione una opcion:\n" +
 					"(1) Crear Usuario\n" +
 					"(2) Agregar cancion\n"+
 					"(3) Crear playlist\n"+
 					"(4) Mostrar la informacion del usuario\n"+
+					"(5) Mostrar la informacion de una cancion\n"+
+					"(6) Mostrar la informacion de la playlist\n"+
 					"(0) Salir" );
 
 			System.out.print(": ");
 			opt = sc.nextInt();
 			sc.nextLine();
-			
-			if(opt!=1 && opt!=2 && opt!=3 && opt!=4 && opt!=0){
-				System.out.println("Digite una opcion valida"); }
-		
+
 			switch (opt){
 				case 1: System.out.println(createUser());
 					break;
@@ -76,9 +75,14 @@ public class Main{
 					break;
 				case 4: System.out.println(showUserInfo());
 					break;
+				case 5: System.out.println(showSongInfo());
+					break;
+				case 6: System.out.println(showPlaylistInfo());
+					break;
 				case 0: System.out.println("   *Fin*");
 					ctrl=true;
 					break;
+				default:System.out.println("Digite una opcion valida");		
 			}
 		}
 	}
@@ -177,7 +181,7 @@ public class Main{
 		int opt=-1;
 		boolean ctrl = false;
 
-		while(opt!=1 && opt!=2 && opt!=3){
+		while(!ctrl){
 			System.out.println(
 					"\nSeleccione una opcion:\n" +
 					"(1) Privada\n" +
@@ -187,17 +191,18 @@ public class Main{
 			System.out.print(": ");
 			opt = sc.nextInt();
 			sc.nextLine();
-			
-			if(opt!=1 && opt!=2 && opt!=3){
-				System.out.println("Digite una opcion valida"); }
 		
 			switch (opt){
 				case 1: message=privatePlaylist(tittle);
+					ctrl=true;
 					break;
 				case 2: message= publicPlaylist(tittle);
+					ctrl=true;
 					break;
 				case 3: message= restrictedPlaylist(tittle);
+					ctrl=true;
 					break;
+				default:System.out.println("Digite una opcion valida");	
 			}
 		}
 		return message;
@@ -260,7 +265,8 @@ public class Main{
 		
 		messageX= mcs.restrictedPlaylistX(name, owner);
 		return messageX;
-	}/**
+	}
+	/**
 	* Show user's information.<br>
 	* <b>pre #1:</b> The mcs is initialized (is not null).<br>
 	* @return a String with the user's information. 
@@ -272,6 +278,59 @@ public class Main{
 		name=sc.nextLine();
 
 		String message= mcs.userInfo(name);
+		return message;
+	}
+	/**
+	* Show song's information.<br>
+	* <b>pre #1:</b> The mcs is initialized (is not null).<br>
+	* @return a String with the song's information. 
+	*/
+	public static String showSongInfo(){
+		String name="";
+		System.out.println("Para mostrar la informacion digite:");
+		System.out.println("Nombre de la cancion");
+		name=sc.nextLine();
+
+		String message= mcs.songInfo(name);
+		return message;
+	}
+	/**
+	* Show playlist's information.<br>
+	* <b>pre #1:</b> The mcs is initialized (is not null).<br>
+	* @return a String with the playlist's information. 
+	*/
+	public static String showPlaylistInfo(){
+		String name="";
+		System.out.println("Para mostrar la informacion digite:");
+		System.out.println("Nombre de la playlist");
+		name=sc.nextLine();
+		System.out.println("Que tipo de playlist es:");
+
+		int opt=-1;
+		boolean ctrl = false;
+
+		while(!ctrl){
+			System.out.println(
+					"\nSeleccione una opcion:\n" +
+					"(1) Privada\n" +
+					"(2) Publica\n"+
+					"(3) Restringida\n");
+
+			System.out.print(": ");
+			opt = sc.nextInt();
+		
+			switch (opt){
+				case 1: ctrl=true;
+					break;
+				case 2: ctrl=true;
+					break;
+				case 3: ctrl=true;
+					break;
+				default:System.out.println("Digite una opcion valida");	
+			}
+		}
+
+		String message= mcs.playlistInfo(name, opt);
 		return message;
 	}
 
